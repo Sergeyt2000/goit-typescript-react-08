@@ -1,0 +1,35 @@
+.modal {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+}
+.cancelBtn {
+    border-radius: 8px;
+    border: 2px solid #6c757d;
+    background-color: transparent;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 70px;
+  }
+  .cancelBtn:hover {
+    background-color: #6c757d;
+    color: #fff;
+    transform: translateY(-2px);
+    border: 2px solid #6c757d;
+  }
+  .yesBtn {
+    border-radius: 8px;
+    border: 2px solid #dc3545;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 70px;
+  }
+  .yesBtn:hover {
+    border: 2px solid #c82333;
+    background-color: #c82333;
+    transform: translateY(-2px);
+  }

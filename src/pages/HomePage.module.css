@@ -1,0 +1,26 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .homePageTitle {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .homePageText {
+    max-width: 600px;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  

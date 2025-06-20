@@ -1,0 +1,82 @@
+.contactBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    min-width: 400px;
+  }
+  
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+  }
+  
+  .contactInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .contactInfo svg {
+    font-size: 1.4em;
+    color: #007bff;
+    transition: color 0.3s;
+  }
+  
+  .contactInfo:hover svg {
+    color: #0056b3;
+  }
+  
+  .name {
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #222;
+  }
+  
+  .delbtn {
+    background-color: #ff4d4f;
+    border: 2px solid #ff4d4f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .delbtn:hover {
+    border: 2px solid #d9363e;
+    background-color: #d9363e;
+    transform: translateY(-2px);
+  }
+
+  .editBtn {
+    margin-right: 10px;
+    outline: none;
+    background-color: #1890ff;
+    border: 2px solid #1890ff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .editBtn:focus,
+  .editBtn:hover {
+    outline: none;
+    border: 2px solid #40a9ff;
+    background-color: #40a9ff;
+    transform: translateY(-2px);
+  }
+  .editInput {
+    width: 80%;
+    padding: 5px;
+    border: 2px solid #d9d9d9;
+    border-radius: 8px;
+  }

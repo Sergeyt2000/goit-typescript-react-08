@@ -1,0 +1,37 @@
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.username {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+
+.btn {
+    display: flex;
+	align-items: center;
+	gap: 8px;
+    background-color: #2196F3;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+  
+  .btn:hover {
+    background-color: #64b5f6;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+  
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
