@@ -1,25 +1,27 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { useId } from "react";
-// import { customAlphabet } from "nanoid";
-// import { numbers } from "nanoid-dictionary";
 import css from "./ContactForm.module.css";
 import { formSchema } from "../../formSchema";
-import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import toast, { Toaster } from "react-hot-toast";
+import { useAppDispatch } from "../../hooks/redux";
 
 export default function ContactForm() {
-  const dispatch = useDispatch();  
+  const dispatch = useAppDispatch();  
   const nameFieldId = useId();
   const phoneFieldId = useId();
-  // const generateId = customAlphabet(numbers, 5);
-  const initialContacts = { username: "", phonenumber: "" };  
+
   
-  const handleSubmit = (values, actions) => {
+  interface FormValues {
+    username: string;
+    phonenumber: string;
+  }
+  const initialContacts: FormValues = { username: "", phonenumber: "" };  
+  
+  const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
     toast.success("Successfully added!");
     dispatch(
       addContact({
-        // id: "id-" + generateId(),
         name: values.username,
         number: values.phonenumber,
       })

@@ -1,13 +1,12 @@
 import css from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations";
 import { useSelector } from "react-redux";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import RestricterRoute from "../RestricterRoute";
 import PrivateRoute from "../PrivateRoute";
-
+import { useAppDispatch } from "../../hooks/redux";
 
 const HomePage = lazy(() => import("../../pages/HomePage"));
 const ContactsPage = lazy(() => import("../../pages/ContactsPage"));
@@ -16,7 +15,7 @@ const RegistrationPage = lazy(() => import("../../pages/RegistrationPage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage"));
 
 export default function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {

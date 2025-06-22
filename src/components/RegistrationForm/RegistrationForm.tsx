@@ -1,23 +1,34 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import css from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { registerSchema } from "../../formSchema";
+import { useAppDispatch } from "../../hooks/redux";
 
 export default function RegistrationForm() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (
+    values: RegisterValues,
+    action: FormikHelpers<RegisterValues>
+  ) => {
     console.log("Form submitted with values:", values);
     dispatch(register(values));
-    resetForm();
+    action.resetForm();
   };
+
+  interface RegisterValues {
+    name: string;
+    email: string;
+    password: string;
+  }
+const initialValues: RegisterValues = { name: "", email: "", password: "" };
 
   return (
     <div className={css.regContainer}>
       <p className={css.regFormText}>Please fill out the form to register.</p>
       <Formik
-        initialValues={{ name: "", email: "", password: "" }}
+        initialValues={initialValues}
         validationSchema={registerSchema}
         onSubmit={handleSubmit}
       >

@@ -1,32 +1,44 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { login } from "../../redux/auth/operations";
 import css from "./LoginForm.module.css";
 import { loginSchema } from "../../formSchema";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useAppDispatch } from "../../hooks/redux";
 
 export default function LoginForm() {
-  const dispatch = useDispatch();
-  const [errorMsg, setErrorMsg] = useState("");
+  const dispatch = useAppDispatch();
+  const [errorMsg, setErrorMsg] = useState<string>("");
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (
+    values: LoginValues,
+    action: FormikHelpers<LoginValues>
+  ) => {
     try {
       await dispatch(login(values)).unwrap();
       setErrorMsg("");
-      resetForm();      
+      action.resetForm();
     } catch {
       setErrorMsg("Error logging in. Please check your credentials.");
       toast.error("Error logging in. Please check your credentials.");
-    }    
+    }
   };
+
+  interface LoginValues {
+    email: string;
+    password: string;
+  }
+  const initialValues: LoginValues = { email: "", password: "" };
 
   return (
     <div className={css.loginContainer}>
-      {errorMsg && <div>
-        <Toaster position="top-center" reverseOrder={false} /></div>}
+      {errorMsg && (
+        <div>
+          <Toaster position="top-center" reverseOrder={false} />
+        </div>
+      )}
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={initialValues}
         validationSchema={loginSchema}
         onSubmit={handleSubmit}
       >

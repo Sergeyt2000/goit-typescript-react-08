@@ -13,14 +13,16 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { AuthState } from "../types/types";
 
-const persistedAuthReducer = persistReducer(
+const persistedAuthReducer = persistReducer<AuthState>(
   {
     key: "user-token",
     storage,
     whitelist: ["token"],
   },
-  authReducer);
+  authReducer
+);
 
 export const store = configureStore({
   reducer: {
@@ -37,3 +39,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

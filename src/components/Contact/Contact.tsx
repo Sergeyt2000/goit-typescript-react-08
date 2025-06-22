@@ -1,23 +1,24 @@
 import css from "./Contact.module.css";
 import { RiContactsFill } from "react-icons/ri";
 import { MdPhone } from "react-icons/md";
-import { useDispatch } from "react-redux";
 import { deleteContact, updateContact } from "../../redux/contacts/operations";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { ContactProps } from "../../types/types";
+import { useAppDispatch } from "../../hooks/redux";
 
-export default function Contact({ contact }) {
+export default function Contact({ contact }: ContactProps) {
   const { id, name, number } = contact;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
   
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedName, setEditedName] = useState(name);
-  const [editedNumber, setEditedNumber] = useState(number);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editedName, setEditedName] = useState<string>(name);
+  const [editedNumber, setEditedNumber] = useState<string>(number);
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     if (isEditing) {

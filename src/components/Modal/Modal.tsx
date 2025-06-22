@@ -1,6 +1,10 @@
 import css from "./Modal.module.css";
 
-export default function Modal({ handleCloseModal, handleDelete }) {
+interface ModalProps {
+  handleCloseModal: () => void;
+  handleDelete: () => void;
+}
+export default function Modal({ handleCloseModal, handleDelete }: ModalProps) {
   return (
     <div className={css.overlay}>
       <div className={css.modal}>

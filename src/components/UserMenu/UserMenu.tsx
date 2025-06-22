@@ -1,13 +1,12 @@
 import css from "./UserMenu.module.css";
-import { useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
-import { NavLink } from "react-router";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { BiLogOut } from "react-icons/bi";
+import { useAppDispatch } from "../../hooks/redux";
 
 export default function UserMenu() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
 
   const handleLogOut = () => {
